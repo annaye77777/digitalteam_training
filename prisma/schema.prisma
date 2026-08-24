@@ -7,6 +7,10 @@
 //
 // 部署在 Vercel（Serverless functions）上執行，需要 rhel-openssl-3.0.x
 // 這個 binary target，否則正式環境會找不到 Prisma 的 query engine。
+//
+// DATABASE_URL 用 Neon 的連線池版本（給正式運行的 app 用，Serverless
+// function 數量一多也不會把資料庫連線數用盡）；DIRECT_URL 用未經連線池
+// 的版本（只給 `prisma migrate` 用，連線池模式跑 migration 容易出問題）。
 
 generator client {
   provider      = "prisma-client-js"
@@ -14,8 +18,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Course {

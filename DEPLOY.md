@@ -22,17 +22,22 @@ git commit -m "Initial commit"
 ## 步驟 2：建立 Postgres 資料庫
 
 1. 到 https://vercel.com 用 GitHub 帳號登入
-2. 左側選 **Storage** → **Create Database** → 選 **Postgres**（背後是 Neon，免費方案足夠這個規模使用）
-3. 建立好之後，進到該資料庫的 **.env.local** 分頁，複製 `DATABASE_URL` 這一行的值（一長串 `postgresql://...` 開頭的連線字串）
+2. 左側選 **Storage** → **Marketplace Database Providers** → **Neon** → **Create**（Auth 開關記得關掉，選 **Free** 方案）
+3. 建立好之後，進到該資料庫頁面的 **Quickstart** → **.env.local** 分頁，會看到兩行：
+   - `DATABASE_URL=...`（連線池版本）
+   - `DATABASE_URL_UNPOOLED=...`（未連線池版本）
+   兩個都複製起來，等一下會用到。
 
 ## 步驟 3：建立 Vercel 專案並部署
 
 1. 回到 Vercel 首頁 → **Add New** → **Project**
 2. 選擇你剛剛 push 上去的 GitHub repository → **Import**
-3. 在 **Environment Variables** 這一區塊，新增一筆：
-   - Key: `DATABASE_URL`
-   - Value: 貼上步驟 2 複製的連線字串
-   - 記得三個環境（Production / Preview / Development）都勾選
+3. 在 **Environment Variables** 這一區塊，新增兩筆：
+   - Key: `DATABASE_URL` → Value: 貼上步驟 2 的 `DATABASE_URL`（連線池版本）
+   - Key: `DIRECT_URL` → Value: 貼上步驟 2 的 `DATABASE_URL_UNPOOLED`（未連線池版本）
+   - 兩筆都記得三個環境（Production / Preview / Development）都勾選
+
+   為什麼要兩個：`DATABASE_URL` 給正式運行的網站查詢資料用（連線池版本，Serverless function 數量一多也不會把資料庫連線數用盡）；`DIRECT_URL` 只給部署時自動執行的 `prisma migrate deploy` 用（未連線池版本，避免連線池模式跑資料庫結構異動時出問題）。
 4. 按 **Deploy**，等它跑完（第一次大約 1–2 分鐘）
 
 部署完成後，Vercel 會給你一個網址，例如 `training-timeline-xxx.vercel.app`，這個網址任何人都可以直接打開使用（目前沒有登入機制，符合你要「完全開放不設限」的決定）。
@@ -44,8 +49,9 @@ git commit -m "Initial commit"
 在你自己電腦上（這個專案資料夾內）：
 
 ```bash
-# 1. 把 .env 裡的 DATABASE_URL 換成步驟 2 複製的雲端連線字串
+# 1. 把 .env 裡的 DATABASE_URL 和 DIRECT_URL 都換成步驟 2 複製的兩組連線字串
 # 2. 執行：
+npx prisma migrate deploy              # 在雲端資料庫建立資料表
 npm run db:seed                        # 建立 Navi / IFRS 全年度 Sprint 行事曆
 npx tsx prisma/restore-courses.ts      # 還原你先前在本機建立的 IFRS 測試課程
 ```
