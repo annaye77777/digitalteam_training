@@ -1,0 +1,66 @@
+// 外訓時間軸比對系統 — 資料模型
+// 注意：location_type / product 刻意以 String 儲存（而非 Postgres enum），
+// 允許值分別限於 "onsite" | "online" 與 "navi" | "ifrs"，由應用層
+// (src/lib/validation.ts) 驗證；這樣未來要增加新值時只需改一個檔案。
+// 所有日期時間欄位皆以「無時區」字串儲存 (YYYY-MM-DD 或 YYYY-MM-DDTHH:mm)，
+// 全站固定視為台北時間，不做任何時區轉換。
+//
+// 部署在 Vercel（Serverless functions）上執行，需要 rhel-openssl-3.0.x
+// 這個 binary target，否則正式環境會找不到 Prisma 的 query engine。
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id            Int              @id @default(autoincrement())
+  title         String
+  costPerPerson Int?             @map("cost_per_person") // 新台幣/人
+  createdAt     DateTime         @default(now()) @map("created_at")
+  sessions      CourseSession[]
+  attendees     CourseAttendee[]
+
+  @@map("courses")
+}
+
+model CourseSession {
+  id           Int      @id @default(autoincrement())
+  courseId     Int      @map("course_id")
+  course       Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  startTime    String   @map("start_time") // "YYYY-MM-DDTHH:mm"
+  endTime      String   @map("end_time")   // "YYYY-MM-DDTHH:mm"
+  locationType String   @map("location_type") // "onsite" | "online"
+  location     String?
+
+  @@map("course_sessions")
+  @@index([courseId])
+}
+
+// 上課人（可多筆，取代原本單一「填寫人」欄位）
+model CourseAttendee {
+  id       Int    @id @default(autoincrement())
+  courseId Int    @map("course_id")
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  name     String
+
+  @@map("course_attendees")
+  @@index([courseId])
+}
+
+model Sprint {
+  id        Int      @id @default(autoincrement())
+  name      String
+  product   String   // "navi" | "ifrs"
+  startDate String   @map("start_date") // "YYYY-MM-DD"
+  endDate   String   @map("end_date")   // "YYYY-MM-DD"
+  note      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("sprints")
+}

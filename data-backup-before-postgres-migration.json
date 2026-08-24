@@ -1,0 +1,415 @@
+{
+  "exportedAt": "2026-08-24T06:50:39.411Z",
+  "courses": [
+    {
+      "id": 10,
+      "title": "IFRS",
+      "costPerPerson": 1500,
+      "createdAt": "2026-08-24T06:05:43.843Z",
+      "sessions": [
+        {
+          "id": 16,
+          "courseId": 10,
+          "startTime": "2026-11-05T09:00",
+          "endTime": "2026-11-05T17:00",
+          "locationType": "onsite",
+          "location": "台北福華文教會館"
+        }
+      ],
+      "attendees": [
+        {
+          "id": 31,
+          "courseId": 10,
+          "name": "Anna"
+        },
+        {
+          "id": 32,
+          "courseId": 10,
+          "name": "Yvonne"
+        },
+        {
+          "id": 33,
+          "courseId": 10,
+          "name": "Kay"
+        },
+        {
+          "id": 34,
+          "courseId": 10,
+          "name": "Johnny"
+        },
+        {
+          "id": 35,
+          "courseId": 10,
+          "name": "Sammy"
+        },
+        {
+          "id": 36,
+          "courseId": 10,
+          "name": "Tammy"
+        }
+      ]
+    }
+  ],
+  "sprints": [
+    {
+      "id": 26,
+      "name": "Sprint 1",
+      "product": "navi",
+      "startDate": "2026-02-27",
+      "endDate": "2026-03-12",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.556Z"
+    },
+    {
+      "id": 27,
+      "name": "Sprint 2",
+      "product": "navi",
+      "startDate": "2026-03-13",
+      "endDate": "2026-03-26",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.602Z"
+    },
+    {
+      "id": 28,
+      "name": "Sprint 3",
+      "product": "navi",
+      "startDate": "2026-03-27",
+      "endDate": "2026-04-09",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.636Z"
+    },
+    {
+      "id": 29,
+      "name": "Sprint 4",
+      "product": "navi",
+      "startDate": "2026-04-10",
+      "endDate": "2026-04-23",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.673Z"
+    },
+    {
+      "id": 30,
+      "name": "Sprint 5",
+      "product": "navi",
+      "startDate": "2026-04-24",
+      "endDate": "2026-05-07",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.708Z"
+    },
+    {
+      "id": 31,
+      "name": "Sprint 6",
+      "product": "navi",
+      "startDate": "2026-05-08",
+      "endDate": "2026-05-21",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.736Z"
+    },
+    {
+      "id": 32,
+      "name": "Sprint 7",
+      "product": "navi",
+      "startDate": "2026-05-22",
+      "endDate": "2026-06-04",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.762Z"
+    },
+    {
+      "id": 33,
+      "name": "Sprint 8",
+      "product": "navi",
+      "startDate": "2026-06-05",
+      "endDate": "2026-06-18",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.792Z"
+    },
+    {
+      "id": 34,
+      "name": "Sprint 9",
+      "product": "navi",
+      "startDate": "2026-06-19",
+      "endDate": "2026-07-02",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.816Z"
+    },
+    {
+      "id": 35,
+      "name": "Sprint 10",
+      "product": "navi",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-16",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.846Z"
+    },
+    {
+      "id": 36,
+      "name": "Sprint 11",
+      "product": "navi",
+      "startDate": "2026-07-17",
+      "endDate": "2026-07-30",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.879Z"
+    },
+    {
+      "id": 37,
+      "name": "Sprint 12",
+      "product": "navi",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-13",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.910Z"
+    },
+    {
+      "id": 38,
+      "name": "Sprint 13",
+      "product": "navi",
+      "startDate": "2026-08-14",
+      "endDate": "2026-08-27",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.944Z"
+    },
+    {
+      "id": 39,
+      "name": "Sprint 14",
+      "product": "navi",
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-10",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:51.976Z"
+    },
+    {
+      "id": 40,
+      "name": "Sprint 15",
+      "product": "navi",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-24",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.009Z"
+    },
+    {
+      "id": 41,
+      "name": "Sprint 16",
+      "product": "navi",
+      "startDate": "2026-09-25",
+      "endDate": "2026-10-08",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.039Z"
+    },
+    {
+      "id": 42,
+      "name": "Sprint 17",
+      "product": "navi",
+      "startDate": "2026-10-09",
+      "endDate": "2026-10-22",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.073Z"
+    },
+    {
+      "id": 43,
+      "name": "Sprint 18",
+      "product": "navi",
+      "startDate": "2026-10-23",
+      "endDate": "2026-11-05",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.110Z"
+    },
+    {
+      "id": 44,
+      "name": "Sprint 19",
+      "product": "navi",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-19",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.142Z"
+    },
+    {
+      "id": 45,
+      "name": "Sprint 20",
+      "product": "navi",
+      "startDate": "2026-11-20",
+      "endDate": "2026-12-03",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.174Z"
+    },
+    {
+      "id": 46,
+      "name": "Sprint 21",
+      "product": "navi",
+      "startDate": "2026-12-04",
+      "endDate": "2026-12-17",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.209Z"
+    },
+    {
+      "id": 47,
+      "name": "Sprint 22",
+      "product": "navi",
+      "startDate": "2026-12-18",
+      "endDate": "2026-12-31",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.238Z"
+    },
+    {
+      "id": 48,
+      "name": "Sprint 1",
+      "product": "ifrs",
+      "startDate": "2026-04-24",
+      "endDate": "2026-05-07",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.268Z"
+    },
+    {
+      "id": 49,
+      "name": "Sprint 2",
+      "product": "ifrs",
+      "startDate": "2026-05-08",
+      "endDate": "2026-05-21",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.299Z"
+    },
+    {
+      "id": 50,
+      "name": "Sprint 3",
+      "product": "ifrs",
+      "startDate": "2026-05-22",
+      "endDate": "2026-06-04",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.331Z"
+    },
+    {
+      "id": 51,
+      "name": "Sprint 4",
+      "product": "ifrs",
+      "startDate": "2026-06-05",
+      "endDate": "2026-06-18",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.364Z"
+    },
+    {
+      "id": 52,
+      "name": "Sprint 5",
+      "product": "ifrs",
+      "startDate": "2026-06-19",
+      "endDate": "2026-07-02",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.403Z"
+    },
+    {
+      "id": 53,
+      "name": "Sprint 6",
+      "product": "ifrs",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-16",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.438Z"
+    },
+    {
+      "id": 54,
+      "name": "Sprint 7",
+      "product": "ifrs",
+      "startDate": "2026-07-17",
+      "endDate": "2026-07-30",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.480Z"
+    },
+    {
+      "id": 55,
+      "name": "Sprint 8",
+      "product": "ifrs",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-13",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.513Z"
+    },
+    {
+      "id": 56,
+      "name": "Sprint 9",
+      "product": "ifrs",
+      "startDate": "2026-08-14",
+      "endDate": "2026-08-27",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.549Z"
+    },
+    {
+      "id": 57,
+      "name": "Sprint 10",
+      "product": "ifrs",
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-10",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.578Z"
+    },
+    {
+      "id": 58,
+      "name": "Sprint 11",
+      "product": "ifrs",
+      "startDate": "2026-09-11",
+      "endDate": "2026-09-24",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.611Z"
+    },
+    {
+      "id": 59,
+      "name": "Sprint 12",
+      "product": "ifrs",
+      "startDate": "2026-09-25",
+      "endDate": "2026-10-08",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.644Z"
+    },
+    {
+      "id": 60,
+      "name": "Sprint 13",
+      "product": "ifrs",
+      "startDate": "2026-10-09",
+      "endDate": "2026-10-22",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.678Z"
+    },
+    {
+      "id": 61,
+      "name": "Sprint 14",
+      "product": "ifrs",
+      "startDate": "2026-10-23",
+      "endDate": "2026-11-05",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.714Z"
+    },
+    {
+      "id": 62,
+      "name": "Sprint 15",
+      "product": "ifrs",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-19",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.749Z"
+    },
+    {
+      "id": 63,
+      "name": "Sprint 16",
+      "product": "ifrs",
+      "startDate": "2026-11-20",
+      "endDate": "2026-12-03",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.785Z"
+    },
+    {
+      "id": 64,
+      "name": "Sprint 17",
+      "product": "ifrs",
+      "startDate": "2026-12-04",
+      "endDate": "2026-12-17",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.823Z"
+    },
+    {
+      "id": 65,
+      "name": "Sprint 18",
+      "product": "ifrs",
+      "startDate": "2026-12-18",
+      "endDate": "2026-12-31",
+      "note": null,
+      "createdAt": "2026-08-24T06:03:52.856Z"
+    }
+  ]
+}
