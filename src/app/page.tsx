@@ -20,6 +20,7 @@ import {
   startOfMonth,
   startOfQuarter,
 } from "@/lib/date";
+import BudgetDashboard from "@/components/BudgetDashboard";
 import Timeline from "@/components/Timeline/Timeline";
 import TimelineControls from "@/components/Timeline/TimelineControls";
 import CourseList from "@/components/CourseList";
@@ -228,6 +229,8 @@ export default function HomePage() {
           </button>
         </div>
       )}
+
+      {!loading && <BudgetDashboard courses={courses} />}
 
       <section className="mb-8">
         <TimelineControls
