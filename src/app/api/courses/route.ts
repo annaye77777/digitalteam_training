@@ -61,6 +61,7 @@ export async function POST(req: NextRequest) {
     data: {
       title: body.title.trim(),
       costPerPerson: parseCostPerPerson(body.costPerPerson ?? ""),
+      introUrl: body.introUrl?.trim() || null,
       sessions: {
         create: body.sessions.map((s) => ({
           startTime: s.startTime,

@@ -11,6 +11,7 @@ import {
   toDateOnly,
 } from "@/lib/date";
 import { courseColor, SPRINT_COLOR_BY_PRODUCT } from "@/lib/colors";
+import { looksLikeUrl } from "@/lib/url";
 import { packRows } from "./rowPacking";
 
 const ROW_HEIGHT = 40;
@@ -80,6 +81,23 @@ function SessionDetail({
       {course.costPerPerson != null && (
         <p className="mt-1 text-slate-500">
           費用：NT$ {course.costPerPerson.toLocaleString("zh-TW")} / 人
+        </p>
+      )}
+      {course.introUrl && (
+        <p className="mt-1 text-slate-500">
+          課程介紹：
+          {looksLikeUrl(course.introUrl) ? (
+            <a
+              href={course.introUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="break-all text-brand-600 underline"
+            >
+              {course.introUrl}
+            </a>
+          ) : (
+            <span className="break-all">{course.introUrl}</span>
+          )}
         </p>
       )}
       {overlapsPlanning && (

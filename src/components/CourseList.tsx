@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import { CourseDTO, CourseSessionDTO } from "@/types";
 import { formatDateTimeRangeDisplay } from "@/lib/date";
 import { courseColor } from "@/lib/colors";
+import { looksLikeUrl } from "@/lib/url";
 
 function locationSummary(session: CourseSessionDTO): string {
   const typeLabel = session.locationType === "onsite" ? "實體" : "線上";
@@ -190,6 +191,23 @@ export default function CourseList({
                     <tr className="bg-slate-50/40">
                       <td></td>
                       <td colSpan={7} className="px-3 py-2">
+                        {c.introUrl && (
+                          <p className="mb-2 text-xs text-slate-600">
+                            課程介紹：
+                            {looksLikeUrl(c.introUrl) ? (
+                              <a
+                                href={c.introUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="break-all text-brand-600 underline"
+                              >
+                                {c.introUrl}
+                              </a>
+                            ) : (
+                              <span className="break-all">{c.introUrl}</span>
+                            )}
+                          </p>
+                        )}
                         <table className="w-full text-xs">
                           <thead className="text-slate-400">
                             <tr>

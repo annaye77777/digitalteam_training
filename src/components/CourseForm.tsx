@@ -10,12 +10,13 @@ function emptySession(): CourseSessionInput {
 
 function toInput(course?: CourseDTO): CourseInput {
   if (!course) {
-    return { title: "", attendees: [""], costPerPerson: "", sessions: [emptySession()] };
+    return { title: "", attendees: [""], costPerPerson: "", introUrl: "", sessions: [emptySession()] };
   }
   return {
     title: course.title,
     attendees: course.attendees.length > 0 ? course.attendees : [""],
     costPerPerson: course.costPerPerson != null ? String(course.costPerPerson) : "",
+    introUrl: course.introUrl ?? "",
     sessions: course.sessions.map((s) => ({
       id: s.id,
       startTime: s.startTime,
@@ -179,6 +180,17 @@ export default function CourseForm({
           onChange={(e) => setForm((f) => ({ ...f, costPerPerson: e.target.value }))}
           className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
           placeholder="例如：3000"
+        />
+      </div>
+
+      <div>
+        <label className="mb-1 block text-sm font-medium text-slate-700">備註（課程介紹連結）</label>
+        <input
+          type="text"
+          value={form.introUrl}
+          onChange={(e) => setForm((f) => ({ ...f, introUrl: e.target.value }))}
+          className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+          placeholder="貼上找到這堂課的介紹網站連結"
         />
       </div>
 

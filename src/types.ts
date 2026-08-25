@@ -19,6 +19,7 @@ export interface CourseDTO {
   id: number;
   title: string;
   costPerPerson: number | null; // 新台幣/人
+  introUrl: string | null; // 備註：課程介紹連結
   createdAt: string;
   attendees: string[]; // 上課人姓名列表
   sessions: CourseSessionDTO[];
@@ -47,6 +48,7 @@ export interface CourseInput {
   title: string;
   attendees: string[]; // 上課人姓名列表，空字串會在送出前被過濾掉
   costPerPerson: string; // 表單原始輸入（新台幣/人），空字串代表未填
+  introUrl: string; // 備註：課程介紹連結，選填
   sessions: CourseSessionInput[];
 }
 

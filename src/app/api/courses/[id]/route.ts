@@ -66,6 +66,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       data: {
         title: body.title.trim(),
         costPerPerson: parseCostPerPerson(body.costPerPerson ?? ""),
+        introUrl: body.introUrl?.trim() || null,
       },
       include: {
         sessions: { orderBy: { startTime: "asc" } },
