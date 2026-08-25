@@ -147,6 +147,22 @@ export default function Timeline({
   const [hover, setHover] = useState<HoverTarget | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  // 滑鼠從區塊移到下方彈出的提示框中間，會短暫離開兩者的範圍；
+  // 用一個小延遲讓「離開」延後生效，讓使用者來得及把滑鼠移進提示框
+  // 裡點擊課程介紹連結，而不會提示框秒消失。
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function cancelClose() {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }
+
+  function scheduleClose() {
+    cancelClose();
+    closeTimerRef.current = setTimeout(() => setHover(null), 200);
+  }
 
   useEffect(() => setMounted(true), []);
 
@@ -161,6 +177,8 @@ export default function Timeline({
       window.removeEventListener("resize", clear);
     };
   }, []);
+
+  useEffect(() => cancelClose, []);
 
   function toggleSession(id: number) {
     setPinnedSessionIds((prev) => {
@@ -389,16 +407,15 @@ export default function Timeline({
                       key={item.session.id}
                       className="absolute"
                       style={{ left: style.left, width: style.width, top: style.top, height: ROW_HEIGHT }}
-                      onMouseEnter={(e) =>
+                      onMouseEnter={(e) => {
+                        cancelClose();
                         setHover({
                           type: "session",
                           id: item.session.id,
                           rect: e.currentTarget.getBoundingClientRect(),
-                        })
-                      }
-                      onMouseLeave={() =>
-                        setHover((h) => (h?.type === "session" && h.id === item.session.id ? null : h))
-                      }
+                        });
+                      }}
+                      onMouseLeave={scheduleClose}
                     >
                       <button
                         type="button"
@@ -441,16 +458,15 @@ export default function Timeline({
                       key={item.id}
                       className="absolute"
                       style={{ left: style.left, width: style.width, top: style.top, height: ROW_HEIGHT }}
-                      onMouseEnter={(e) =>
+                      onMouseEnter={(e) => {
+                        cancelClose();
                         setHover({
                           type: "sprint",
                           id: item.id,
                           rect: e.currentTarget.getBoundingClientRect(),
-                        })
-                      }
-                      onMouseLeave={() =>
-                        setHover((h) => (h?.type === "sprint" && h.id === item.id ? null : h))
-                      }
+                        });
+                      }}
+                      onMouseLeave={scheduleClose}
                     >
                       <button
                         type="button"
@@ -514,13 +530,17 @@ export default function Timeline({
       )}
 
       {/* Hover 提示：用 portal 掛到 body，fixed 定位，不受任何祖先的
-          overflow/卷軸裁切影響，一定完整顯示 */}
+          overflow/卷軸裁切影響，一定完整顯示。可以互動（不是
+          pointer-events-none），滑鼠移進提示框裡也會取消關閉，
+          這樣才點得到裡面的課程介紹連結。 */}
       {mounted &&
         hover &&
         createPortal(
           <div
-            className="pointer-events-none fixed z-[9999] rounded-lg border border-slate-200 bg-white p-3 text-xs shadow-lg"
+            className="fixed z-[9999] rounded-lg border border-slate-200 bg-white p-3 text-xs shadow-lg"
             style={{ ...tooltipPosition(hover.rect), width: TOOLTIP_WIDTH }}
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
           >
             {hoverContent()}
           </div>,
